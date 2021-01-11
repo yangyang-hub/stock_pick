@@ -7,7 +7,7 @@ def everdate(starttime,endtime):
 	#获取所有有股票
 	stock_info = ts.get_stock_basics()
 	#连接数据库
-	conn = mysql.connector.connect(user='root',password='password',database='test')
+	conn = mysql.connector.connect(user='root',password='root',database='test')
 	cursor = conn.cursor()
 
 	codes = stock_info.index

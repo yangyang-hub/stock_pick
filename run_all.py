@@ -22,11 +22,11 @@ def send_email():
 	f.close()
 	#设置自己邮件服务器和账号密码
 	smtpserver = 'smtp.163.com'
-	user = '17665324876@163.com'
-	password = 'xxxxx'
+	user = 'yangyang134837@163.com'
+	password = 'yy1348379987'
 	#设置接收邮箱和主题
 	sender = user
-	receiver = '497051142@qq.com'
+	receiver = '1348379987@qq.com'
 	subject = '今天的股票行情来啦'
 	
 	msg = MIMEMultipart('mixed')

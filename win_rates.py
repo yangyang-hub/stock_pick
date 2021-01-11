@@ -14,7 +14,7 @@ def rate(todays):
 	fp.write('总共找到%d支满足条件的股票分别是\n%s\n'%(a,count))
 
 	#连接数据库
-	conn = mysql.connector.connect(user='root',password='password',database='test')
+	conn = mysql.connector.connect(user='root',password='root',database='test')
 	cursor = conn.cursor()
 	#遍历满足条件的这些股票
 	for x in count:

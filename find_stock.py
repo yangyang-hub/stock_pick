@@ -21,7 +21,7 @@ def valid_stock(dates):
 	today = time.strftime('%Y%m%d',str_today)
 	flog.write('执行的时间是%s\n'%today)
 	#连接数据库
-	conn = mysql.connector.connect(user='root',password='password',database='test')
+	conn = mysql.connector.connect(user='root',password='root',database='test')
 	cursor = conn.cursor()
 	#查找allstock表获取所有股票代码
 	cursor.execute('select code from allstock')

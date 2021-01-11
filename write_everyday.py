@@ -9,7 +9,7 @@ def everystock():
 	#获取股票代码列
 	codes = stock_info.index
 	#连接数据库
-	conn = mysql.connector.connect(user='root',password='password',database='test')
+	conn = mysql.connector.connect(user='root',password='root',database='test')
 	cursor = conn.cursor()
 	#获取当前时间
 	new_time = time.strftime('%Y-%m-%d')
