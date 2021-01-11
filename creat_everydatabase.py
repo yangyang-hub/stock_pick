@@ -9,7 +9,7 @@ def everdate(starttime,endtime):
 	stock_info = ts.stock_basic()
 	# stock_info = ts.get_stock_basics()
 	#连接数据库
-	conn = mysql.connector.connect(user='root',password='root',database='test')
+	conn = mysql.connector.connect(user='root',password='root',database='stock')
 	cursor = conn.cursor()
 
 	codes = stock_info.symbol

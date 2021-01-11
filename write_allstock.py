@@ -5,7 +5,7 @@ import tushare as ts
 #通过tushare库获取所有的A股列表
 stock_info = ts.get_stock_basics()
 #连接数据库
-conn = mysql.connector.connect(user='root',password='root',database='test')
+conn = mysql.connector.connect(user='root',password='root',database='stock')
 cursor = conn.cursor()
 
 codes = stock_info.index

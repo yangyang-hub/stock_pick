@@ -47,7 +47,7 @@ def send_email():
 	smtp.quit()
 
 if __name__ == '__main__':
-	test_report_dir = 'D:\\python\\work\\stock\\WD\\run\\report\\'
+	test_report_dir = 'D:\\PythonProject\\stock_pick\\report\\'
 	#如果执行的不是当天的日期的话请将第一个todays注释掉
 	todays = time.strftime('%Y-%m-%d')
 #	todays = '2018-03-14'
