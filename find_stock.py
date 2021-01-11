@@ -4,7 +4,7 @@ import datetime,os
 #从数据库获取股票数据，统计想要查找日期的满足阳包阴并且当天涨停的股票
 def valid_stock(dates):
 	#载入日志，好查错（因为之前统计出来的股票我去实时查了一下完全不满足条件，所以想到了加入日志好定位是哪个地方出错了）
-	dir_log = 'D:\\python\\work\\stock\\WD\\run\log\\'
+	dir_log = 'D:\\PythonProject\\stock_pick\\log\\'
 	filename = dir_log + dates +'.log'
 	flog = open(filename,'w')
 

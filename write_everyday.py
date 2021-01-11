@@ -1,11 +1,12 @@
 #每天下午三点之后进行股票数据添加到数据库，这个文件一般只需要每天执行一次，也可以用来补行情，如果数据库缺少那天的数据的话，只需修改new_time就行，如下示例
-import tushare as ts
+import tushare as ts1
 import mysql.connector
 import re,time
 #每天行情出来了之后，插入当天的行情到每支股票的每个表格中
 def everystock():
 	#获取所有股票列表
-	stock_info = ts.get_stock_basics()
+	ts = ts1.pro_api('48664f289b98d05be6737d086fd711ca62f7ba08d17410a73cfa8181')
+	stock_info = ts.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
 	#获取股票代码列
 	codes = stock_info.index
 	#连接数据库
@@ -32,7 +33,7 @@ def everystock():
 		except:
 			print('%s无行情或者数据库已经存在当天的数据'%codes[x])
 	#统计当天插入数据库的股票数量
-	dir_log = 'D:\\python\\work\\stock\\WD\\run\log\\'
+	dir_log = 'D:\\PythonProject\\stock_pick\\log\\'
 	filename = dir_log + new_time +'.log'
 	flog = open(filename,'w')
 	flog.write('今天的行情插入完成%s条'%a)

@@ -1,16 +1,18 @@
-import tushare as ts
+import tushare as ts1
 import mysql.connector
 import re,time
 #创建所有股票的表格以及插入每支股票的近段时间的行情，这个文件只需要执行一次！！！
 #想要写入哪一段时间的数据只需要修改starttime,endtime的时间就可以了
 def everdate(starttime,endtime):
 	#获取所有有股票
-	stock_info = ts.get_stock_basics()
+	ts = ts1.pro_api('48664f289b98d05be6737d086fd711ca62f7ba08d17410a73cfa8181')
+	stock_info = ts.stock_basic()
+	# stock_info = ts.get_stock_basics()
 	#连接数据库
 	conn = mysql.connector.connect(user='root',password='root',database='test')
 	cursor = conn.cursor()
 
-	codes = stock_info.index
+	codes = stock_info.symbol
 	a = 0
 	#通过for循环以及获取A股只数来遍历每一只股票
 	for x in range(0,len(stock_info)):
@@ -40,4 +42,4 @@ def everdate(starttime,endtime):
 	#统计总共插入了多少张表的数据
 	print('所有股票总共插入数据库%d张表格'%a)
 
-everdate('2018-01-01','2018-03-14')
+everdate('2020-01-01','2021-01-11')
