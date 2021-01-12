@@ -21,7 +21,7 @@ def everystock():
 		try:
 			if re.match('000',codes[x]) or re.match('002',codes[x]):
 				#获取单只股票当天的行情
-				df = ts.get_hist_data(codes[x],new_time,new_time)
+				df = ts1.get_hist_data(codes[x],new_time,new_time)
 				#将时间转换格式
 				times = time.strptime(new_time,'%Y-%m-%d')
 				time_new = time.strftime('%Y%m%d',times)
