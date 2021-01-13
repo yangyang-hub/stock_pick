@@ -23,7 +23,7 @@ def send_email():
 	#设置自己邮件服务器和账号密码
 	smtpserver = 'smtp.163.com'
 	user = 'yangyang134837@163.com'
-	password = 'yy1348379987'
+	password = 'RJMWZPBVUSYTQKRE'
 	#设置接收邮箱和主题
 	sender = user
 	receiver = '1348379987@qq.com'

@@ -1,14 +1,16 @@
 import mysql.connector
-import tushare as ts
+import tushare as ts1
 #将所有的股票名称和股票代码、行业、地区写入到名为allstock的表中，这个文件只需要执行一次
 
 #通过tushare库获取所有的A股列表
-stock_info = ts.get_stock_basics()
+# stock_info = ts.get_stock_basics()
+ts = ts1.pro_api('48664f289b98d05be6737d086fd711ca62f7ba08d17410a73cfa8181')
+stock_info = ts.stock_basic()
 #连接数据库
 conn = mysql.connector.connect(user='root',password='root',database='stock')
 cursor = conn.cursor()
 
-codes = stock_info.index
+codes = stock_info.symbol
 names = stock_info.name
 industrys = stock_info.industry
 areas = stock_info.area

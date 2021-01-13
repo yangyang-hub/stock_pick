@@ -48,4 +48,4 @@ def everdate(starttime, endtime):
     print('所有股票总共插入数据库%d张表格' % a)
 
 
-everdate('2020-01-01', '2021-01-11')
+everdate('2020-01-01', '2021-01-12')
