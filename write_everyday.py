@@ -15,8 +15,8 @@ def everystock():
     conn = mysql.connector.connect(user='root', password='root', database='stock')
     cursor = conn.cursor()
     # 获取当前时间
-    new_time = time.strftime('%Y-%m-%d')
-    # new_time = '2018-03-13'
+    # new_time = time.strftime('%Y-%m-%d')
+    new_time = '2021-01-18'
     a = 0
     ##使用for循环遍历所有的股票
     for x in range(0, len(stock_info)):
@@ -29,8 +29,8 @@ def everystock():
             time_new = time.strftime('%Y%m%d', times)
             #				#将当天的行情插入数据库
             cursor.execute('insert into stock_' + codes[
-                x] + ' (date,open,close,high,low,volume,p_change) values (%s,%s,%s,%s,%s,%s,%s)' % (
-                               time_new, df.open[0], df.close[0], df.high[0], df.low[0], df.volume[0], df.p_change[0]))
+                x] + ' (date,open,close,high,low,volume,p_change,price_change,ma5,ma10,ma20,v_ma5,v_ma10,v_ma20,turnover) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)' % (
+                               time_new, df.open[0], df.close[0], df.high[0], df.low[0], df.volume[0], df.p_change[0],df.price_change[0],df.ma5[0],df.ma10[0],df.ma20[0],df.v_ma5[0],df.v_ma10[0],df.v_ma20[0],df.turnover[0]))
 
             print('%s的数据插入完成' % codes[x])
             a += 1

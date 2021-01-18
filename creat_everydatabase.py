@@ -22,7 +22,21 @@ def everdate(starttime, endtime):
         # if re.match('000',codes[x]) or re.match('002',codes[x]):
         # 以stock_加股票代码为表名称创建表格
         cursor.execute('create table stock_' + codes[
-            x] + ' (date varchar(32),open varchar(32),close varchar(32),high varchar(32),low varchar(32),volume varchar(32),p_change varchar(32),unique(date))')
+            x] + ' (date varchar(32) COMMENT ' + '\'日期\'' +
+                       ',open varchar(32) COMMENT ' + '\'开盘价\'' +
+                       ',close varchar(32) COMMENT ' + '\'收盘价\'' +
+                       ',high varchar(32) COMMENT ' + '\'最高价\'' +
+                       ',low varchar(32) COMMENT ' + '\'最低价\'' +
+                       ',volume varchar(32) COMMENT ' + '\'成交量\'' +
+                       ',p_change varchar(32) COMMENT ' + '\'涨跌幅\'' +
+                       ',price_change varchar(32) COMMENT ' + '\'价格变动\'' +
+                       ',ma5 varchar(32) COMMENT ' + '\'5日均价\'' +
+                       ',ma10 varchar(32) COMMENT ' + '\'10日均价\'' +
+                       ',ma20 varchar(32) COMMENT ' + '\'20日均价\'' +
+                       ',v_ma5 varchar(32) COMMENT ' + '\'5日均量\'' +
+                       ',v_ma10 varchar(32) COMMENT ' + '\'10日均量\'' +
+                       ',v_ma20 varchar(32) COMMENT ' + '\'20日均量\'' +
+                       ',turnover varchar(32) COMMENT ' + '\'换手率[注：指数无此项]\' ' +',unique(date))')
         # 利用tushare包获取单只股票的阶段性行情
         df = ts1.get_hist_data(codes[x], starttime, endtime)
         print('%s的表格创建完成' % codes[x])
@@ -36,8 +50,8 @@ def everdate(starttime, endtime):
                 time_new = time.strftime('%Y%m%d', times)
                 # 插入每一天的行情
                 cursor.execute('insert into stock_' + codes[
-                    x] + ' (date,open,close,high,low,volume,p_change) values (%s,%s,%s,%s,%s,%s,%s)' % (
-                               time_new, df.open[i], df.close[i], df.high[i], df.low[i], df.volume[i], df.p_change[i]))
+                    x] + ' (date,open,close,high,low,volume,p_change,price_change,ma5,ma10,ma20,v_ma5,v_ma10,v_ma20,turnover) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)' % (
+                               time_new, df.open[i], df.close[i], df.high[i], df.low[i], df.volume[i], df.p_change[i],df.price_change[i],df.ma5[i],df.ma10[i],df.ma20[i],df.v_ma5[i],df.v_ma10[i],df.v_ma20[i],df.turnover[i]))
 
         except:
             print('%s这股票目前停牌' % codes[x])
@@ -48,4 +62,4 @@ def everdate(starttime, endtime):
     print('所有股票总共插入数据库%d张表格' % a)
 
 
-everdate('2020-01-01', '2021-01-12')
+everdate('2020-01-01', '2021-01-18')

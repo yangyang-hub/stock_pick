@@ -1,6 +1,5 @@
 import mysql.connector
-import re,time
-import datetime,os
+import re
 
 def delete(dates):
 	conn = mysql.connector.connect(user='root',password='root',database='stock')

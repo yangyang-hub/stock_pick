@@ -49,10 +49,10 @@ def send_email():
 if __name__ == '__main__':
 	test_report_dir = 'D:\\PythonProject\\stock_pick\\report\\'
 	#如果执行的不是当天的日期的话请将第一个todays注释掉
-	todays = time.strftime('%Y-%m-%d')
-#	todays = '2018-03-14'
+	# todays = time.strftime('%Y-%m-%d')
+	todays = '2021-01-18'
 	#如果不是交易日执行的话write_everyday会报错，会报tushare获取不到行情，所以请手动输入日期并将下面一行注释掉
-	write_everyday.everystock()
+	# write_everyday.everystock()
 	time.sleep(3)
 	win_rates.rate(todays)
 	
